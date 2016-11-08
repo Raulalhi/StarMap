@@ -1,20 +1,24 @@
 class Star {
- float hab;
- String name;
+ float Hab;
+ String Name;
  float distance;
  float Xg, Yg, Zg;
  float AbsMag;
  
  
- Star(String TableRow)
+ Star(float thab, String tName, float tdistance, float txg, float tyg, float tzg, float tAbsMag)
   {
-    String[] parts = line.split(",");
-    hab = Float.parseFloat(parts[2]);
-    name = parts[3];
-    distance = Float.parseFloat(parts[12]);
-    Xg = Float.parseFloat(parts[13]);
-    Yg = Float.parseFloat(parts[14]);
-    Zg = Float.parseFloat(parts[15]);
-    AbsMag = Float.parseFloat(parts[16]);
+    Hab = thab;
+    Name = tName;
+    distance = tdistance;
+    Xg = txg;
+    Yg = tyg;
+    Zg = tzg;
+    AbsMag = tAbsMag;
+  }
+  
+  String toString()
+  {
+    return Hab + "\t" + Name + "\t" + distance + "\t" + Xg + "\t" + Yg + "\t" + Zg + "\t" + AbsMag;
   }
 }

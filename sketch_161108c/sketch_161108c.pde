@@ -2,24 +2,38 @@
 //C14722441
 
 ArrayList<Star> stars = new ArrayList<Star>();
+Table table;
 
 void setup()
 {
   size(800, 800);
+  loaddata();
+  printStars();
 }
 
-void loadExpenses() {
+void loaddata() {
   
   //Create an array of lines
-  String[] lines = loadStrings("expenses.txt");
+  table = loadTable("stars.csv", "header");
   
-  for(int i = 0; i < lines.length; i++)
+  println(table.getRowCount() + " total rows in table"); 
+
+  for(TableRow row : table.rows())
   {
     // transform line into class.
-    Star star = new Star(lines[i]);
+    Star star =   new Star(row.getFloat("Hab?"),row.getString("Display Name"), row.getFloat("Distance"),
+                  row.getFloat("Xg"), row.getFloat("Yg"),row.getFloat("Zg"),row.getFloat("AbsMag"));
     
     //Add class into arraylist;
     stars.add(star);
+  }
+}
+
+void printStars()
+{
+  for (Star star:stars)
+  {
+    println(star);
   }
 }
 void draw()
